@@ -7,6 +7,7 @@
     tools:context=".FirstFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/host_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
