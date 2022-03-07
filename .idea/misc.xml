@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/activity_edit_host.xml" value="0.5416666666666666" />
         <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/activity_main.xml" value="0.32653985507246375" />
         <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/content_main.xml" value="0.32653985507246375" />
         <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/fragment_first.xml" value="0.262037037037037" />
         <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/fragment_second.xml" value="0.262037037037037" />
         <entry key="..\:/workspace/EzMonitor/app/src/main/res/layout/host_text_view.xml" value="0.31354166666666666" />
+        <entry key="..\:/workspace/EzMonitor/app/src/main/res/menu/menu_host.xml" value="0.5536458333333333" />
+        <entry key="..\:/workspace/EzMonitor/app/src/main/res/menu/menu_main.xml" value="0.5536458333333333" />
       </map>
     </option>
   </component>
