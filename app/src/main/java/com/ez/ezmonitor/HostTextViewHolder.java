@@ -1,6 +1,8 @@
 package com.ez.ezmonitor;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,5 +38,16 @@ public class HostTextViewHolder extends RecyclerView.ViewHolder {
         hostUsernameTextView = v.findViewById(R.id.text_host_username);
     }
 
+    public void bind(Host host) {
+        hostNameTextView.setText(host.name);
+        hostIpTextView.setText(host.ip);
+        hostPortTextView.setText(String.valueOf(host.port));
+        hostUsernameTextView.setText(host.username);
+    }
 
+    public static HostTextViewHolder create(ViewGroup parent) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.host_text_view, parent, false);
+        return new HostTextViewHolder(v);
+    }
 }

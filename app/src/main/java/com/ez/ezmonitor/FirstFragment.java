@@ -1,26 +1,25 @@
 package com.ez.ezmonitor;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ez.ezmonitor.databinding.FragmentFirstBinding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
-
-    private List<Host> hostList = new ArrayList<>();
+    private HostListViewModel hostListViewModel;
 
     protected RecyclerView hostListView;
 
@@ -29,16 +28,16 @@ public class FirstFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(this.getClass().getName(),"main fragment onCreate");
         super.onCreate(savedInstanceState);
-        initHostList();
     }
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
+        Log.d(this.getClass().getName(),"main fragment onCreateView");
         binding = FragmentFirstBinding.inflate(inflater, container, false);
 
         hostListView = binding.hostListView;
@@ -46,8 +45,11 @@ public class FirstFragment extends Fragment {
         hostListLayoutManager = new LinearLayoutManager(getActivity());
         hostListView.setLayoutManager(hostListLayoutManager);
 
-        HostAdapter hostAdapter = new HostAdapter(hostList);
+        HostAdapter hostAdapter = new HostAdapter(new HostAdapter.HostDiff());
         hostListView.setAdapter(hostAdapter);
+
+        hostListViewModel = new ViewModelProvider(this).get(HostListViewModel.class);
+        hostListViewModel.getAllHosts().observe(getViewLifecycleOwner(), hostAdapter::submitList);
 
         return binding.getRoot();
 
@@ -69,12 +71,5 @@ public class FirstFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private void initHostList() {
-        Host host1 = new Host("host1", "1.1.1.1", 22, "root", "123");
-        hostList.add(host1);
-        Host host2 = new Host("host2", "1.1.1.2", 1234, "root", "123");
-        hostList.add(host2);
     }
 }

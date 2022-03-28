@@ -1,40 +1,38 @@
 package com.ez.ezmonitor;
 
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 
-import java.util.List;
+public class HostAdapter extends ListAdapter<Host, HostTextViewHolder> {
 
-public class HostAdapter extends RecyclerView.Adapter<HostTextViewHolder> {
-
-    private List<Host> inputHosts;
-
-    public HostAdapter(List<Host> hosts) {
-        inputHosts = hosts;
+    public HostAdapter(@NonNull DiffUtil.ItemCallback<Host> diffCallback) {
+        super(diffCallback);
     }
 
     @NonNull
     @Override
     public HostTextViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.host_text_view, parent, false);
-        return new HostTextViewHolder(v);
+        return HostTextViewHolder.create(parent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HostTextViewHolder holder, int position) {
-        holder.getHostNameTextView().setText(inputHosts.get(position).getName());
-        holder.getHostIpTextView().setText(inputHosts.get(position).getIp());
-        holder.getHostPortTextView().setText(String.valueOf(inputHosts.get(position).getPort()));
-        holder.getHostUsernameTextView().setText(inputHosts.get(position).getUsername());
+        holder.bind(getItem(position));
     }
 
-    @Override
-    public int getItemCount() {
-        return inputHosts.size();
+    static class HostDiff extends DiffUtil.ItemCallback<Host> {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Host oldItem, @NonNull Host newItem) {
+            return oldItem.id == newItem.id;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Host oldItem, @NonNull Host newItem) {
+            return oldItem.equals(newItem);
+        }
     }
 }
