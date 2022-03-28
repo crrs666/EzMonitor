@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".HostEditActivity"
-            android:label="Host">
+            android:label="Host"
+            android:theme="@style/Theme.EzMonitor.NoActionBar">
 
         </activity>
 
