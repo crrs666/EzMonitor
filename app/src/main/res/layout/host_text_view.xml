@@ -10,24 +10,28 @@
     <TextView
         android:id="@+id/text_host_name"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"/>
 
     <TextView
         android:id="@+id/text_host_ip"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"/>
 
     <TextView
         android:id="@+id/text_host_port"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"/>
 
     <TextView
         android:id="@+id/text_host_username"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"/>
 </LinearLayout>
