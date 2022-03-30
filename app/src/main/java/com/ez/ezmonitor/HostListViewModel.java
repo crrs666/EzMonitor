@@ -14,7 +14,7 @@ public class HostListViewModel extends AndroidViewModel {
 
     public HostListViewModel(Application application) {
         super(application);
-        hostRepository = new HostRepository(application);
+        hostRepository = HostRepository.getInstance(application);
         allHosts = hostRepository.getAllHosts();
     }
 
